@@ -138,6 +138,23 @@ tail(filtered2)
 
 #dplyr package makes things easier (consider using it in the homeworks)
 
+TW_corals<-read.table('tw_corals.txt', header=T, sep='\t', dec='.') 
+
+TW_corals_long <- TW_corals %>%
+  +     pivot_longer(Southern_TW:Northern_Is, names_to = "Region", values_to = "Richness")
+
+TW_corals_long
+
+income<-read.table('metoo.txt',header=T, sep="\t", dec=".", na.strings = "n/a")
+income
+
+
+###HOMEWORK
+#
+
+
+
+
 
 
 
