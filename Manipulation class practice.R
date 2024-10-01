@@ -67,6 +67,47 @@ rownames(females)<-c('Vanessa', 'Vicky', 'Michelle', 'Joyce', 'Victoria')
 #Write females, to see the new table
 females
 
+##Using the iris data set, create three smaller data sets corresponding to the three species designated in the column Species
+iris$Species=='setosa'
+f<-iris$Species=='setosa'
+f
+setosaf<-iris[f,]
+setosaf
+
+versf<-iris$Species=='versicolor'
+versicolor<-iris[versf,]
+versicolor
+
+virgf<-iris$Species=='virginica'
+virginica<-iris[virgf,]
+virginica
+
+#SAMPLE
+
+# create a vector from 1 to the number of row in 'females'
+1:nrow(females)
+
+# filter with two randomly selected female students
+sf<-sample(1:nrow(females), 2)
+sf
+
+# apply the filter on our original data set
+females[sf,]
+
+#SORTING
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
