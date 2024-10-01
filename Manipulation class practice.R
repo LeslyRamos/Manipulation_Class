@@ -96,6 +96,19 @@ females[sf,]
 
 #SORTING
 
+##Homework
+iris$colors<-ifelse(iris$Species=='setosa', 'purple', ifelse(iris$Species=='versicolor', 'blue','pink'))
+
+iris$colors
+
+iris
+
+iris[order(-iris$Sepal.Width),]
+
+iris$colors<-NULL
+
+iris
+
 
 
 
