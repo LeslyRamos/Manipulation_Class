@@ -100,6 +100,48 @@ females[sf,]
 
 
 
+##CLASS OCTUBER 1st
+
+summarised <- summarise(iris, Mean.Width = mean(Sepal.Width))
+head(summarised)
+
+# by column names
+selection1 <- dplyr::select(iris, Sepal.Length, Sepal.Width, Petal.Length)
+head(selection1) 
+
+## this anotation "::" is when I want to specify which package I wan to use. If I use this, I do not need to load the package.
+
+#2:7 means take everything from 2 to 7 (range)
+
+#"c" means combine
+# by column range number
+selection3 <- dplyr::select(iris,c(2:5))
+head(selection3)
+
+#to remove some columns
+selection4 <- dplyr::select(iris, -Sepal.Length, -Sepal.Width)
+
+# Select setosa species
+filtered1 <- filter(iris, Species == "setosa" )
+head(filtered1,3)
+
+
+# Select versicolor species with Sepal width more than 3
+filtered2 <- filter(iris, Species == "versicolor", Sepal.Width > 3)
+tail(filtered2)
+
+#tibble is kind of a data frame, kind of like a super data frame. There is a higher inspection of the data set. 
+?tibble::tibble
+
+#Pipe operator: is "%>%"
+## Is going to let you connect operations together. Such as filter, select, arrange, summarise, group_by, etc. 
+
+#dplyr package makes things easier (consider using it in the homeworks)
+
+
+
+
+
 
 
 
