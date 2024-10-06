@@ -115,14 +115,20 @@ iris
 
 ##CLASS OCTUBER 1st
 
+#summarize: is used to gain insights (mean, median, mode, etc.). It reduces several values to a single value.
 summarised <- summarise(iris, Mean.Width = mean(Sepal.Width))
 head(summarised)
 
+#The select function is used to select data based on the name of a column.
 # by column names
 selection1 <- dplyr::select(iris, Sepal.Length, Sepal.Width, Petal.Length)
 head(selection1) 
+# by column range
+selection2 <- dplyr::select(iris, Sepal.Length:Petal.Length)
+
 
 ## this anotation "::" is when I want to specify which package I wan to use. If I use this, I do not need to load the package.
+
 
 #2:7 means take everything from 2 to 7 (range)
 
@@ -130,26 +136,50 @@ head(selection1)
 # by column range number
 selection3 <- dplyr::select(iris,c(2:5))
 head(selection3)
-
-#to remove some columns
+#to remove some columns, or to hide a column
 selection4 <- dplyr::select(iris, -Sepal.Length, -Sepal.Width)
 
+
+#The filter function is used to filter rows with matching criteria. It works in the same way as the select function (i.e. we pass a data frame together with a comma-separated condition).
 # Select setosa species
 filtered1 <- filter(iris, Species == "setosa" )
 head(filtered1,3)
-
-
 # Select versicolor species with Sepal width more than 3
 filtered2 <- filter(iris, Species == "versicolor", Sepal.Width > 3)
 tail(filtered2)
 
+
+#The function mutate is to create new columns (variables) while preserving existing columns in a data set.
+#To create a column “Greater.Half” which stores a logical vector (T/F)
+mutated1 <- mutate(iris, Greater.Half = Sepal.Width > 0.5 * Sepal.Length)
+#To check how many flowers fall in this condition
+table(mutated1$Greater.Half)
+
+
+#he arrange function is used to sort rows by variables in ascending (default) or descending order.
+arranged1 <- arrange(iris, Sepal.Width)
+# Sepal Width by descending order
+arranged2 <- arrange(iris, desc(Sepal.Width))
+
+
+#The group_by function groups observations within a data set according to one or more variables. Data operations are often performed on groups defined by variables. ungroup removes grouping.
+# Mean sepal width by Species
+gp <- group_by(iris, Species)
+gp.mean <- summarise(gp,Mean.Sepal = mean(Sepal.Width))
+gp.mean
+
 #tibble is kind of a data frame, kind of like a super data frame. There is a higher inspection of the data set. 
 ?tibble::tibble
 
+
 #Pipe operator: is "%>%"
 ## Is going to let you connect operations together. Such as filter, select, arrange, summarise, group_by, etc. 
-
+#To select the rows with conditions
+iris %>% filter(Species == "setosa",Sepal.Width > 3.8)
 #dplyr package makes things easier (consider using it in the homeworks)
+
+
+#tidyr
 
 TW_corals<-read.table('tw_corals.txt', header=T, sep='\t', dec='.') 
 
